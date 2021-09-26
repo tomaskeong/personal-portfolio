@@ -3,8 +3,7 @@ import { useEffect } from "react"
 import AOS from "aos"
 import "aos/dist/aos.css"
 import dynamic from "next/dynamic"
-import ScrollToTop from "../components/ScrollToTop"
-import "assets/styles/main.scss"
+import "@styles/main.scss"
 
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -12,7 +11,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, [])
 
   const DynamicAnimatedCursor = dynamic(
-    () => import("./../components/animated-cursor/AnimatedCursorComponent"),
+    () => import("components/animated-cursor/AnimatedCursorComponent"),
     {
       ssr: false,
     }
