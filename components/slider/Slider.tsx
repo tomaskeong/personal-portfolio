@@ -8,8 +8,8 @@ const contactInfo = {
 
 const sliderContent = {
   name: "Tomás Keong",
-  description:
-    '"Any sufficiently advanced technology is indistinguishable from magic."',
+  description: `"Any sufficiently advanced technology is indistinguishable from magic."
+    Clarke's third law`,
   btnText: " Donwload CV",
 }
 
@@ -69,7 +69,7 @@ const Slider = () => {
                 >
                   <a
                     className="px-btn px-btn-white"
-                    href="docs/CV_Tomas_Keong.pdf"
+                    href="doc/CV_Tomas_Keong.pdf"
                     download
                   >
                     {sliderContent.btnText}
