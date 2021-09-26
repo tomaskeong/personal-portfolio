@@ -11,7 +11,7 @@ const sliderContent = {
     text: '"Any sufficiently advanced technology is indistinguishable from magic."',
     cite: "Arthur C. Clarke",
   },
-  btnText: " Donwload CV",
+  btnText: "Download CV",
 }
 
 const Slider = () => {
