@@ -1,15 +1,16 @@
 import React from "react"
+import { FaQuoteRight } from "react-icons/fa"
 import { TextLoop } from "react-text-loop-next"
-
 const contactInfo = {
-  /* phone: "+351 917415770", */
   email: "tomaskeong@gmail.com",
 }
 
 const sliderContent = {
   name: "Tomás Keong",
-  description: `"Any sufficiently advanced technology is indistinguishable from magic."
-    Clarke's third law`,
+  quote: {
+    text: '"Any sufficiently advanced technology is indistinguishable from magic."',
+    cite: "Arthur C. Clarke",
+  },
   btnText: " Donwload CV",
 }
 
@@ -53,14 +54,22 @@ const Slider = () => {
                   </TextLoop>
                 </div>
 
-                <p
-                  className="desc"
+                <blockquote
                   data-aos="fade-up"
                   data-aos-duration="1200"
                   data-aos-delay="300"
                 >
-                  {sliderContent.description}
-                </p>
+                  <p className="quote-text">{sliderContent.quote.text}</p>
+                  <FaQuoteRight
+                    className="doublequote"
+                    color="#ff9301"
+                    size={20}
+                  />
+                  <cite>
+                    <p>- {sliderContent.quote.cite}</p>
+                  </cite>
+                </blockquote>
+
                 <div
                   className="mt-4"
                   data-aos="fade-up"

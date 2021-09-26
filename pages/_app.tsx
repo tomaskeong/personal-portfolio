@@ -1,8 +1,9 @@
 import type { AppProps } from "next/app"
 import { useEffect } from "react"
+import dynamic from "next/dynamic"
 import AOS from "aos"
 import "aos/dist/aos.css"
-import dynamic from "next/dynamic"
+import ScrollToTop from "components/ScrollToTop"
 import "@styles/main.scss"
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -18,6 +19,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   )
   return (
     <>
+      <ScrollToTop />
       <DynamicAnimatedCursor
         color="255, 147, 1"
         outerAlpha={0.2}

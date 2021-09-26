@@ -1,6 +1,6 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
+import dynamic from "next/dynamic"
 import Scrollspy from "react-scrollspy"
-import ReactTooltip from "react-tooltip"
 import {
   FiUser,
   FiBriefcase,
@@ -8,14 +8,17 @@ import {
   FiPhoneOutgoing,
 } from "react-icons/fi"
 import { FaHome, FaBlog } from "react-icons/fa"
-
 const NavMenu = () => {
   const [click, setClick] = useState(false)
   const handleClick = () => setClick(!click)
 
+  const Tooltip = dynamic(() => import("react-tooltip"), {
+    ssr: false,
+  })
+
   return (
     <>
-      {/* Header */}
+      {/* Header mobile*/}
       <div className="mob-header">
         <button className="toggler-menu" onClick={handleClick}>
           <div className={click ? "active" : ""}>
@@ -52,9 +55,9 @@ const NavMenu = () => {
                 onClick={handleClick}
               >
                 <FaHome />
-                <ReactTooltip id="HOME" place="top" type="dark" effect="float">
+                <Tooltip id="HOME">
                   <span>Home</span>
-                </ReactTooltip>
+                </Tooltip>
               </a>
             </li>
             <li>
@@ -66,9 +69,9 @@ const NavMenu = () => {
                 onClick={handleClick}
               >
                 <FiUser />
-                <ReactTooltip id="ABOUT" place="top" type="dark" effect="float">
+                <Tooltip id="ABOUT">
                   <span>About</span>
-                </ReactTooltip>
+                </Tooltip>
               </a>
             </li>
             <li>
@@ -80,14 +83,9 @@ const NavMenu = () => {
                 onClick={handleClick}
               >
                 <FiFileText />
-                <ReactTooltip
-                  id="RESUME"
-                  place="top"
-                  type="dark"
-                  effect="float"
-                >
+                <Tooltip id="RESUME">
                   <span>Resume</span>
-                </ReactTooltip>
+                </Tooltip>
               </a>
             </li>
             <li>
@@ -99,9 +97,9 @@ const NavMenu = () => {
                 onClick={handleClick}
               >
                 <FiBriefcase />
-                <ReactTooltip id="WORK" place="top" type="dark" effect="float">
+                <Tooltip id="WORK">
                   <span>Work</span>
-                </ReactTooltip>
+                </Tooltip>
               </a>
             </li>
             <li>
@@ -113,9 +111,9 @@ const NavMenu = () => {
                 onClick={handleClick}
               >
                 <FaBlog />
-                <ReactTooltip id="BLOG" place="top" type="dark" effect="float">
+                <Tooltip id="BLOG">
                   <span>Blog</span>
-                </ReactTooltip>
+                </Tooltip>
               </a>
             </li>
             <li>
@@ -127,14 +125,9 @@ const NavMenu = () => {
                 onClick={handleClick}
               >
                 <FiPhoneOutgoing />
-                <ReactTooltip
-                  id="CONTACT"
-                  place="top"
-                  type="dark"
-                  effect="float"
-                >
+                <Tooltip id="CONTACT">
                   <span>Contact</span>
-                </ReactTooltip>
+                </Tooltip>
               </a>
             </li>
           </Scrollspy>
