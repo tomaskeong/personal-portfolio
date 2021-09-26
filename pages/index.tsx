@@ -6,8 +6,10 @@ const Home: NextPage = () => {
   return (
     <div className="main-left theme-dark">
       <HeadComponent />
+      {/* End Head component */}
 
       <Slider />
+      {/* End Slider component */}
     </div>
   )
 }

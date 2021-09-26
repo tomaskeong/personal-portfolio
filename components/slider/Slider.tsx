@@ -9,7 +9,7 @@ const contactInfo = {
 const sliderContent = {
   name: "Tomás Keong",
   description:
-    "Any sufficiently advanced technology is indistinguishable from magic.",
+    '"Any sufficiently advanced technology is indistinguishable from magic."',
   btnText: " Donwload CV",
 }
 
@@ -22,16 +22,6 @@ const Slider = () => {
           <div className="hb-info">
             <a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a>
           </div>
-          <div className="hb-lang">
-            <ul className="nav">
-              <li className="active">
-                <a href="#">EN</a>
-              </li>
-              <li>
-                <a href="#">FR</a>
-              </li>
-            </ul>
-          </div>
         </div>
         {/* End hp-top-fixed */}
 
@@ -40,7 +30,7 @@ const Slider = () => {
             <div className="col-lg-7">
               <div className="type-box">
                 <h6 data-aos="fade-up" data-aos-duration="1200">
-                  Hello, My name is
+                  Hi, my name is
                 </h6>
                 <h1
                   className="font-alt"
