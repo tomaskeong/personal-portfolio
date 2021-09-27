@@ -2,6 +2,8 @@ import React from "react"
 import Social from "components/Social"
 import Image from "next/image"
 import Separator from "components/Separator"
+import Skills from "components/skills/Skills"
+import profileAvatar from "assets/imgs/profile-avatar.jpg"
 
 const About = () => {
   return (
@@ -18,7 +20,7 @@ const About = () => {
                 <div className="img">
                   <div className="img-in">
                     <Image
-                      src="/img/profile-avatar.jpg"
+                      src={profileAvatar}
                       alt="Profile Avatar"
                       width={500}
                       height={500}
@@ -111,15 +113,20 @@ const About = () => {
             {/* End col */}
           </div>
 
-          {/* separated */}
           <Separator />
-          {/* End separated */}
+
+          {/* Skills */}
+          <div className="title">
+            <h3>Skills</h3>
+          </div>
+          <Skills />
+          {/* End Skills */}
+
+          <Separator />
 
           <div className="title">
-            <h3>What I do?</h3>
+            <h3>Technologies</h3>
           </div>
-
-          {/* End .row */}
         </div>
       </section>
     </>

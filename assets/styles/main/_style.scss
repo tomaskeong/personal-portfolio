@@ -519,9 +519,15 @@ out {
     line-height: 60px;
     font-size: 40px;
     color: $px-white;
+    & > div {
+      max-width: 17% !important;
+    }
+    .img-svg {
+      filter: invert(1);
+    }
   }
   .feature-content {
-    padding-top: 50px;
+    padding-top: 55px;
   }
   h5 {
     margin-bottom: 15px;
