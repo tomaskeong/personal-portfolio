@@ -142,7 +142,6 @@ export default function SimpleSlider(): JSX.Element {
           >
             <div className="technologies-01 media">
               <span className="technology-scope">{slide.scope}</span>
-
               <div className="media-body">
                 {slide.desc?.map(
                   (technology, index) =>

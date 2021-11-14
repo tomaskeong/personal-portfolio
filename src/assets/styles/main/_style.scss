@@ -626,10 +626,13 @@ out {
     }
   }
   .media-body {
-    padding-left: 25px;
+    padding-left: 15px;
     @include down-sm {
       padding-left: 15px;
     }
+    border-left: solid 1px;
+    border-left-color: $px-gray-dark;
+    margin-left: 18px;
   }
   h6 {
     color: $px-white;
