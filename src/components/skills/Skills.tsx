@@ -15,8 +15,8 @@ const SkillsContent = [
   },
   {
     icon: BackendIcon,
-    title: 'Backend',
-    descriptions: `Designed and implemented .NET C# solutions`,
+    title: '.NET',
+    descriptions: `Designed and implemented .NET C# solutions; Developed Unity applications with C# scripting`,
     delayAnimation: '200',
   },
   {
