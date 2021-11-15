@@ -488,6 +488,7 @@ out {
   overflow: hidden;
   position: relative;
   z-index: 1;
+  max-height: 288px;
   .theme-light & {
     background: $px-white;
   }
