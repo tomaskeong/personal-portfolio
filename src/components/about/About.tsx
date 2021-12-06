@@ -1,6 +1,6 @@
 import React from 'react'
 
-import profileAvatar from 'assets/imgs/profile-avatar.jpg'
+import profileAvatar from 'assets/imgs/profile-avatar-2.jpg'
 import Certifications from 'components/certifications/Certifications'
 import Separator from 'components/Separator'
 import Skills from 'components/skills/Skills'
@@ -25,8 +25,8 @@ const About = (): JSX.Element => {
                     <Image
                       src={profileAvatar}
                       alt="Profile Avatar"
-                      width={500}
-                      height={500}
+                      width={1450}
+                      layout="responsive"
                     />
                   </div>
 
