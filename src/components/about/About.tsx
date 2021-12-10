@@ -9,7 +9,6 @@ import Technologies from 'components/technologies/Technologies'
 import Image from 'next/image'
 
 const About = (): JSX.Element => {
-  /* comment */
   return (
     <>
       <section id="about" className="section theme-light dark-bg">
