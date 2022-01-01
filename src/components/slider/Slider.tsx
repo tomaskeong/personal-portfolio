@@ -126,7 +126,7 @@ const Slider = (props: SliderProps): JSX.Element => {
         {/* End Container*/}
         <div className="hb-me" data-aos="fade-left" data-aos-duration="1200">
           <Image
-            src={publicRuntimeConfig.CMS_API_URL + getImageSrc()}
+            src={publicRuntimeConfig.CMS_URL + getImageSrc()}
             layout="fill"
             alt="banner-image"
           />

@@ -19,7 +19,7 @@ const HeadComponent = (props: HeadProps): JSX.Element => {
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link
         rel="icon"
-        href={`${publicRuntimeConfig.CMS_API_URL}${dataFieldUtils.getField(
+        href={`${publicRuntimeConfig.CMS_URL}${dataFieldUtils.getField(
           dataFieldUtils.getField(props.global, 'FavIcon'),
           'url',
           true,
