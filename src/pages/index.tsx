@@ -25,7 +25,7 @@ const Home: NextPage = ({
       <Slider mainRoles={mainRoles} global={global} quotation={quotation} />
       {/* End Slider section */}
 
-      <About global={global} />
+      <About />
       {/* End About section */}
 
       <footer className="footer white">

@@ -24,6 +24,17 @@ export type Quotation = {
 const { publicRuntimeConfig } = getConfig()
 
 const Slider = (props: SliderProps): JSX.Element => {
+  const getImageSrc = () => {
+    const imgUrl = dataFieldUtils.getField(
+      dataFieldUtils.getField(props.global, 'HomeBanner'),
+      'url',
+      true,
+    )
+    if (!imgUrl) return '/'
+
+    return imgUrl
+  }
+
   return (
     <>
       {/*  Home Banner */}
@@ -72,14 +83,14 @@ const Slider = (props: SliderProps): JSX.Element => {
                   data-aos-duration="1200"
                   data-aos-delay="300"
                 >
-                  <p className="quote-text">{props.quotation.quote}</p>
+                  <p className="quote-text">{props.quotation?.quote}</p>
                   <FaQuoteRight
                     className="doublequote"
                     color="#ff9301"
                     size={20}
                   />
                   <cite>
-                    <p>- {props.quotation.author}</p>
+                    <p>- {props.quotation?.author}</p>
                   </cite>
                 </blockquote>
 
@@ -115,15 +126,9 @@ const Slider = (props: SliderProps): JSX.Element => {
         {/* End Container*/}
         <div className="hb-me" data-aos="fade-left" data-aos-duration="1200">
           <Image
-            src={
-              publicRuntimeConfig.CMS_API_URL +
-              dataFieldUtils.getField(
-                dataFieldUtils.getField(props.global, 'HomeBanner'),
-                'url',
-                true,
-              )
-            }
+            src={publicRuntimeConfig.CMS_API_URL + getImageSrc()}
             layout="fill"
+            alt="banner-image"
           />
         </div>
       </section>
