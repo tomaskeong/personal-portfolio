@@ -74,15 +74,15 @@ export const getStaticProps: GetStaticProps = async () => {
 
     return {
       props: {
-        global: global?.data,
-        mainRoles: mainRoles?.data,
-        quotation: _quotation,
+        global: global?.data || null,
+        mainRoles: mainRoles?.data || null,
+        quotation: _quotation || null,
       },
     }
   } catch (err) {
     return {
       props: {
-        errors: JSON.stringify(err),
+        errors: JSON.stringify(err) || null,
       },
     }
   }
