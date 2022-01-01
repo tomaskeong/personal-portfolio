@@ -14,7 +14,7 @@ const NotFound: NextPage = () => {
             <div className="col-lg-8 text-center">
               <div className="inner">
                 <h1 className="display-3 white-color m-15px-b">
-                  404 - Page Not Found..
+                  404 - Page Not Found
                 </h1>
                 <p className="h4">
                   Whoops, it looks like the page you request wasn&apos;t found.

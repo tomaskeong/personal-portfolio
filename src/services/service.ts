@@ -4,7 +4,7 @@ const fetchWrapper = {
   delete: _delete,
 }
 
-function get(url: string): Promise<Response> {
+function get(url: string): Promise<unknown> {
   const requestOptions = {
     method: 'GET',
   }
@@ -14,7 +14,7 @@ function get(url: string): Promise<Response> {
   ).then(handleResponse)
 }
 
-function post(url: string, body: unknown): Promise<Response> {
+function post(url: string, body: unknown): Promise<unknown> {
   const requestOptions = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -27,7 +27,7 @@ function post(url: string, body: unknown): Promise<Response> {
 }
 
 // Prefixed with underscored because delete is a reserved word in JavaScript
-function _delete(url: string): Promise<Response> {
+function _delete(url: string): Promise<unknown> {
   const requestOptions = {
     method: 'DELETE',
   }
@@ -39,17 +39,15 @@ function _delete(url: string): Promise<Response> {
 
 // Helper functions
 
-function handleResponse(response: Response) {
-  return response.text().then((text) => {
-    const data = text && JSON.parse(text)
+export const handleResponse = async (response: Response): Promise<any> => {
+  if (!response) return
+  const data = await response.json()
 
-    if (!response.ok) {
-      const error = (data && data.message) || response.statusText
-      return Promise.reject(error)
-    }
+  if (!response.ok) {
+    return (data && data.message) || response.statusText
+  }
 
-    return data
-  })
+  return data
 }
 
 export default fetchWrapper

@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   }, [])
 
   const DynamicAnimatedCursor = dynamic(
-    () => import('components/animated-cursor/AnimatedCursorComponent'),
+    () => import('common/components/animated-cursor/AnimatedCursorComponent'),
     {
       ssr: false,
     },
@@ -29,6 +29,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
         outerSize={50}
         innerScale={0.7}
         outerScale={1.2}
+        trailingSpeed={9}
       />
       <Component {...pageProps} />
     </>

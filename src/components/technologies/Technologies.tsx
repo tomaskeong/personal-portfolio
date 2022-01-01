@@ -4,7 +4,7 @@ import { FaCss3Alt, FaHtml5, FaReact, FaSass } from 'react-icons/fa'
 import {
   SiCsharp,
   SiJavascript,
-  SiNextDotJs,
+  SiNextdotjs,
   SiRedux,
   SiTailwindcss,
   SiTypescript,
@@ -12,7 +12,7 @@ import {
   SiAzuredevops,
   SiMicrosoftazure,
   SiAzurepipelines,
-  SiDotNet,
+  SiDotnet,
   SiUnity,
 } from 'react-icons/si'
 import Slider from 'react-slick'
@@ -54,7 +54,7 @@ export default function SimpleSlider(): JSX.Element {
           name: 'React',
         },
         {
-          img: <SiNextDotJs color="white" size="40" />,
+          img: <SiNextdotjs color="white" size="40" />,
           name: 'Next.js',
         },
         {
@@ -96,7 +96,7 @@ export default function SimpleSlider(): JSX.Element {
       scope: '.NET',
       desc: [
         {
-          img: <SiDotNet color="white" size="40" key="react" />,
+          img: <SiDotnet color="white" size="40" key="react" />,
           name: '.NET',
         },
         {

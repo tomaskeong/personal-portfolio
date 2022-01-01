@@ -35,7 +35,6 @@ const NavMenu = (): JSX.Element => {
               <a href="#">TK</a>
             </div>
           </div>
-          {/* End htl-top */}
 
           <Scrollspy
             className="nav nav-menu"

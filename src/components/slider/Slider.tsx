@@ -1,21 +1,29 @@
 import React from 'react'
 
+import { dataFieldUtils } from 'common/utils/dataFields'
+import getConfig from 'next/config'
+import Image from 'next/image'
 import { FaQuoteRight } from 'react-icons/fa'
 import { TextLoop } from 'react-text-loop-next'
+
 const contactInfo = {
   email: 'tomaskeong@gmail.com',
 }
 
-const sliderContent = {
-  name: 'Tomás Keong',
-  quote: {
-    text: '"Any sufficiently advanced technology is indistinguishable from magic."',
-    cite: 'Arthur C. Clarke',
-  },
-  btnText: 'Download CV',
+type SliderProps = {
+  mainRoles: []
+  global: Record<string, unknown>
+  quotation: Quotation
 }
 
-const Slider = (): JSX.Element => {
+export type Quotation = {
+  quote: string
+  author: string
+}
+
+const { publicRuntimeConfig } = getConfig()
+
+const Slider = (props: SliderProps): JSX.Element => {
   return (
     <>
       {/*  Home Banner */}
@@ -40,7 +48,7 @@ const Slider = (): JSX.Element => {
                   data-aos-duration="1200"
                   data-aos-delay="100"
                 >
-                  {sliderContent.name}
+                  {dataFieldUtils.getField(props.global, 'Name')}
                 </h1>
                 <div
                   data-aos="fade-up"
@@ -48,10 +56,14 @@ const Slider = (): JSX.Element => {
                   data-aos-delay="200"
                 >
                   <TextLoop>
-                    <p className="loop-text lead"> Lead Engineer</p>
-                    <p className="loop-text lead"> Technical Lead</p>
-                    <p className="loop-text lead"> Web Developer</p>
-                    <p className="loop-text lead"> Music Enthusiast</p>
+                    {props.mainRoles?.map((role, index) => {
+                      return (
+                        <p className="loop-text lead" key={`role_${index}`}>
+                          {' '}
+                          {dataFieldUtils.getField(role, 'name')}
+                        </p>
+                      )
+                    })}
                   </TextLoop>
                 </div>
 
@@ -60,14 +72,14 @@ const Slider = (): JSX.Element => {
                   data-aos-duration="1200"
                   data-aos-delay="300"
                 >
-                  <p className="quote-text">{sliderContent.quote.text}</p>
+                  <p className="quote-text">{props.quotation.quote}</p>
                   <FaQuoteRight
                     className="doublequote"
                     color="#ff9301"
                     size={20}
                   />
                   <cite>
-                    <p>- {sliderContent.quote.cite}</p>
+                    <p>- {props.quotation.author}</p>
                   </cite>
                 </blockquote>
 
@@ -79,10 +91,21 @@ const Slider = (): JSX.Element => {
                 >
                   <a
                     className="px-btn px-btn-white"
-                    href="docs/CV_Tomas_Keong.pdf"
-                    download
+                    href={
+                      publicRuntimeConfig.CMS_API_URL +
+                      dataFieldUtils.getField(
+                        dataFieldUtils.getField(
+                          props.global,
+                          'CurriculumVitae',
+                        ),
+                        'url',
+                        true,
+                      )
+                    }
+                    target="_blank"
+                    rel="noreferrer"
                   >
-                    {sliderContent.btnText}
+                    Download CV
                   </a>
                 </div>
               </div>
@@ -90,6 +113,19 @@ const Slider = (): JSX.Element => {
           </div>
         </div>
         {/* End Container*/}
+        <div className="hb-me" data-aos="fade-left" data-aos-duration="1200">
+          <Image
+            src={
+              publicRuntimeConfig.CMS_API_URL +
+              dataFieldUtils.getField(
+                dataFieldUtils.getField(props.global, 'HomeBanner'),
+                'url',
+                true,
+              )
+            }
+            layout="fill"
+          />
+        </div>
       </section>
 
       {/* End Home Banner  */}

@@ -1,21 +1,30 @@
+import { dataFieldUtils } from 'common/utils/dataFields'
+import getConfig from 'next/config'
 import Head from 'next/head'
 
 type HeadProps = {
-  title?: string
+  global: Record<string, unknown>
 }
 
-const HeadComponent = ({
-  title = 'Tomás Keong | Personal Website',
-}: HeadProps): JSX.Element => {
+const { publicRuntimeConfig } = getConfig()
+
+const HeadComponent = (props: HeadProps): JSX.Element => {
   return (
     <Head>
-      <title>{title}</title>
+      <title>{dataFieldUtils.getField(props.global, 'SiteName')}</title>
       <meta
         name="description"
-        content="Website containing Tomás Keong's information such as professional experience, education, skills, resume and certifications."
+        content={dataFieldUtils.getField(props.global, 'SEO')?.MetaDescription}
       />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link rel="icon" href="/favicon.ico" />
+      <link
+        rel="icon"
+        href={`${publicRuntimeConfig.CMS_API_URL}${dataFieldUtils.getField(
+          dataFieldUtils.getField(props.global, 'FavIcon'),
+          'url',
+          true,
+        )}`}
+      />
     </Head>
   )
 }

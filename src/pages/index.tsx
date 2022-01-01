@@ -1,24 +1,31 @@
+import { api } from 'common/constants'
+import { dataFieldUtils } from 'common/utils/dataFields'
 import About from 'components/about/About'
 import Footer from 'components/footer/Footer'
 import NavMenu from 'components/nav-menu/NavMenu'
-import type { NextPage } from 'next'
+import type { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next'
+import { handleResponse } from 'services/service'
 
 import HeadComponent from '../components/Head'
-import Slider from '../components/slider/Slider'
+import Slider, { Quotation } from '../components/slider/Slider'
 
-const Home: NextPage = () => {
+const Home: NextPage = ({
+  global,
+  mainRoles,
+  quotation,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <div className="main-left theme-dark">
-      <HeadComponent />
+      <HeadComponent global={global} />
       {/* End Head section */}
 
       <NavMenu />
       {/* End Navigation Menu section */}
 
-      <Slider />
+      <Slider mainRoles={mainRoles} global={global} quotation={quotation} />
       {/* End Slider section */}
 
-      <About />
+      <About global={global} />
       {/* End About section */}
 
       <footer className="footer white">
@@ -32,3 +39,51 @@ const Home: NextPage = () => {
 }
 
 export default Home
+
+export const getStaticProps: GetStaticProps = async () => {
+  const headers = {
+    Authorization: `bearer ${process.env.CMS_API_TOKEN}`,
+  }
+
+  try {
+    const [globalRes, mainRolesRes, quotationRes] = await Promise.all([
+      fetch(
+        `${process.env.CMS_API_URL}/${api.root}/${api.apiUrl.global}/${api.populate}`,
+        {
+          headers,
+        },
+      ),
+      fetch(`${process.env.CMS_API_URL}/${api.root}/${api.apiUrl.mainRoles}`, {
+        headers,
+      }),
+      fetch(`${process.env.CMS_API_URL}/${api.root}/${api.apiUrl.quotation}`, {
+        headers,
+      }),
+    ])
+
+    const [global, mainRoles, quotation] = await Promise.all([
+      handleResponse(globalRes),
+      handleResponse(mainRolesRes),
+      handleResponse(quotationRes),
+    ])
+
+    const _quotation: Quotation = {
+      quote: dataFieldUtils.getField(quotation.data, 'Quote'),
+      author: dataFieldUtils.getField(quotation.data, 'Author'),
+    }
+
+    return {
+      props: {
+        global: global?.data,
+        mainRoles: mainRoles?.data,
+        quotation: _quotation,
+      },
+    }
+  } catch (err) {
+    return {
+      props: {
+        errors: JSON.stringify(err),
+      },
+    }
+  }
+}

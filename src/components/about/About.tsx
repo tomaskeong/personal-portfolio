@@ -8,7 +8,11 @@ import Social from 'components/Social'
 import Technologies from 'components/technologies/Technologies'
 import Image from 'next/image'
 
-const About = (): JSX.Element => {
+type AboutProps = {
+  global: Record<string, unknown>
+}
+
+const About = (props: AboutProps): JSX.Element => {
   return (
     <>
       <section id="about" className="section theme-light dark-bg">
