@@ -47,16 +47,13 @@ export const getStaticProps: GetStaticProps = async () => {
 
   try {
     const [globalRes, mainRolesRes, quotationRes] = await Promise.all([
-      fetch(
-        `${process.env.CMS_API_URL}/${api.root}/${api.apiUrl.global}/${api.populate}`,
-        {
-          headers,
-        },
-      ),
-      fetch(`${process.env.CMS_API_URL}/${api.root}/${api.apiUrl.mainRoles}`, {
+      fetch(`${process.env.CMS_API_URL}/${api.apiUrl.global}/${api.populate}`, {
         headers,
       }),
-      fetch(`${process.env.CMS_API_URL}/${api.root}/${api.apiUrl.quotation}`, {
+      fetch(`${process.env.CMS_API_URL}/${api.apiUrl.mainRoles}`, {
+        headers,
+      }),
+      fetch(`${process.env.CMS_API_URL}/${api.apiUrl.quotation}`, {
         headers,
       }),
     ])
@@ -78,12 +75,14 @@ export const getStaticProps: GetStaticProps = async () => {
         mainRoles: mainRoles?.data || null,
         quotation: _quotation || null,
       },
+      revalidate: 30,
     }
   } catch (err) {
     return {
       props: {
         errors: JSON.stringify(err) || null,
       },
+      revalidate: 30,
     }
   }
 }
