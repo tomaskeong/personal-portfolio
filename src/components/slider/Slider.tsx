@@ -83,14 +83,17 @@ const Slider = (props: SliderProps): JSX.Element => {
                   data-aos-duration="1200"
                   data-aos-delay="300"
                 >
-                  <p className="quote-text">{props.quotation?.quote}</p>
+                  <p className="quote-text">
+                    &quot;Any sufficiently advanced technology is
+                    indistinguishable from magic.&quot;
+                  </p>
                   <FaQuoteRight
                     className="doublequote"
                     color="#ff9301"
                     size={20}
                   />
                   <cite>
-                    <p>- {props.quotation?.author}</p>
+                    <p>- Arthur C. Clarke</p>
                   </cite>
                 </blockquote>
 
@@ -103,7 +106,7 @@ const Slider = (props: SliderProps): JSX.Element => {
                   <a
                     className="px-btn px-btn-white"
                     href={
-                      publicRuntimeConfig.CMS_API_URL +
+                      publicRuntimeConfig.CMS_URL +
                       dataFieldUtils.getField(
                         dataFieldUtils.getField(
                           props.global,
@@ -124,13 +127,9 @@ const Slider = (props: SliderProps): JSX.Element => {
           </div>
         </div>
         {/* End Container*/}
-        <div className="hb-me" data-aos="fade-left" data-aos-duration="1200">
-          <Image
-            src={publicRuntimeConfig.CMS_URL + getImageSrc()}
-            layout="fill"
-            alt="banner-image"
-          />
-        </div>
+        {/*  <div className="hb-me" data-aos="fade-left" data-aos-duration="1200">
+          <Image src={getImageSrc()} layout="fill" alt="banner-image" />
+        </div> */}
       </section>
 
       {/* End Home Banner  */}

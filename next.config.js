@@ -7,6 +7,8 @@ module.exports = {
     CMS_URL: process.env.CMS_URL,
   },
   images: {
-    domains: ['localhost'],
+    domains: ['localhost', process.env.CMS_URL],
+    loader: 'imgix',
+    path: process.env.CMS_URL,
   },
 }
